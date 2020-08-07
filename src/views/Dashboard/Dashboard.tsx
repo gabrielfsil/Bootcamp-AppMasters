@@ -17,6 +17,9 @@ import BugReport from "@material-ui/icons/BugReport";
 import Code from "@material-ui/icons/Code";
 import Cloud from "@material-ui/icons/Cloud";
 import CheckIcon from '@material-ui/icons/Check';
+import BubbleChartIcon from '@material-ui/icons/BubbleChart';
+import PeopleIcon from '@material-ui/icons/People';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 // core components
 import GridItem from "../../components/Grid/GridItem";
 import GridContainer from "../../components/Grid/GridContainer";
@@ -83,17 +86,17 @@ class Dashboard extends React.Component<Props, State> {
         <GridContainer>
           <GridItem xs={12} sm={6} md={3}>
             <Card>
-              <CardHeader color="success" stats={true} icon={true}>
-                <CardIcon color="success">
-                  <Store />
+              <CardHeader color="danger" stats={true} icon={true}>
+                <CardIcon color="danger">
+                  <BubbleChartIcon />
                 </CardIcon>
-                <p className={classes.cardCategory}>Revenue</p>
-                <h3 className={classes.cardTitle}>$34,245</h3>
+                <p className={classes.cardCategory}>Casos Confirmados</p>
+                <h3 className={classes.cardTitle}>329.201</h3>
               </CardHeader>
               <CardFooter stats={true}>
                 <div className={classes.stats}>
-                  <DateRange />
-                  Last 24 Hours
+                  <PeopleIcon />
+                  Em todo o Brasil
                 </div>
               </CardFooter>
             </Card>
@@ -102,38 +105,34 @@ class Dashboard extends React.Component<Props, State> {
             <Card>
               <CardHeader color="warning" stats={true} icon={true}>
                 <CardIcon color="warning">
-                  <Icon>content_copy</Icon>
+                  <Icon>warning</Icon>
                 </CardIcon>
-                <p className={classes.cardCategory}>Used Space</p>
+                <p className={classes.cardCategory}>Casos Suspeitos</p>
                 <h3 className={classes.cardTitle}>
-                  49/50 <small>GB</small>
+                  504.323
                 </h3>
               </CardHeader>
               <CardFooter stats={true}>
                 <div className={classes.stats}>
-                  <Danger>
-                    <Warning />
-                  </Danger>
-                  <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                    Get more space
-                  </a>
+                  <PeopleIcon />
+                  Em todo o Brasil
                 </div>
               </CardFooter>
             </Card>
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
             <Card>
-              <CardHeader color="danger" stats={true} icon={true}>
-                <CardIcon color="danger">
-                  <Icon>info_outline</Icon>
+              <CardHeader color="success" stats={true} icon={true}>
+                <CardIcon color="success">
+                  <FavoriteIcon />
                 </CardIcon>
-                <p className={classes.cardCategory}>Fixed Issues</p>
-                <h3 className={classes.cardTitle}>75</h3>
+                <p className={classes.cardCategory}>Casos Recuperados</p>
+                <h3 className={classes.cardTitle}>75.321</h3>
               </CardHeader>
               <CardFooter stats={true}>
                 <div className={classes.stats}>
-                  <LocalOffer />
-                  Tracked from Github
+                  <PeopleIcon />
+                  Em todo o Brasil
                 </div>
               </CardFooter>
             </Card>
@@ -144,47 +143,26 @@ class Dashboard extends React.Component<Props, State> {
                 <CardIcon color="info">
                   <Accessibility />
                 </CardIcon>
-                <p className={classes.cardCategory}>Followers</p>
-                <h3 className={classes.cardTitle}>+245</h3>
+                <p className={classes.cardCategory}>Casos Descartados</p>
+                <h3 className={classes.cardTitle}>343.234</h3>
               </CardHeader>
               <CardFooter stats={true}>
                 <div className={classes.stats}>
-                  <Update />
-                  Just Updated
+                  <PeopleIcon />
+                  Em todo o Brasil
                 </div>
               </CardFooter>
             </Card>
           </GridItem>
         </GridContainer>
+
+        {/* Segundo Container */}
         <GridContainer>
-          <GridItem xs={12} sm={12} md={4}>
+
+
+          <GridItem xs={12} sm={12} md={12}>
             <Card chart={true}>
-              <CardHeader color="success">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={dailySalesChart.data}
-                  type="Line"
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Daily Sales</h4>
-                <p className={classes.cardCategory}>
-                  <span className={classes.successText}>
-                    <ArrowUpward className={classes.upArrowCardCategory} /> 55%
-                  </span>{" "}
-                  increase in today sales.
-                </p>
-              </CardBody>
-              <CardFooter chart={true}>
-                <div className={classes.stats}>
-                  <AccessTime /> updated 4 minutes ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart={true}>
-              <CardHeader color="warning">
+              <CardHeader color="primary">
                 <ChartistGraph
                   className="ct-chart"
                   data={emailsSubscriptionChart.data}
@@ -192,40 +170,20 @@ class Dashboard extends React.Component<Props, State> {
                 />
               </CardHeader>
               <CardBody>
-                <h4 className={classes.cardTitle}>Email Subscriptions</h4>
+                <h4 className={classes.cardTitle}>Novos Casos Confirmados</h4>
                 <p className={classes.cardCategory}>
-                  Last Campaign Performance
+                  Esta semana
                 </p>
               </CardBody>
               <CardFooter chart={true}>
                 <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
+                  <AccessTime /> atualizado hoje
                 </div>
               </CardFooter>
             </Card>
           </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart={true}>
-              <CardHeader color="danger">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={completedTasksChart.data}
-                  type="Line"
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Completed Tasks</h4>
-                <p className={classes.cardCategory}>
-                  Last Campaign Performance
-                </p>
-              </CardBody>
-              <CardFooter chart={true}>
-                <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
+          
+          
         </GridContainer>
         <GridContainer>
           <GridItem xs={12} sm={12} md={6}>
@@ -294,14 +252,14 @@ class Dashboard extends React.Component<Props, State> {
         </GridContainer>
         <GridContainer>
           <GridItem xs={12}>
-          <Card>
+            <Card>
               <CardHeader color="success">
                 <div className={classes.messages}>
                   <h4 className={classes.cardTitleWhite}>Mensagens Positivas</h4>
                   {!creatingMessage && (
-                    <Button 
-                      color="transparent" 
-                      variant="outlined" 
+                    <Button
+                      color="transparent"
+                      variant="outlined"
                       onClick={() => this.setState({ creatingMessage: true })}
                     >
                       Enviar Mensagem
@@ -310,31 +268,31 @@ class Dashboard extends React.Component<Props, State> {
                 </div>
               </CardHeader>
               <CardBody>
-                {!creatingMessage 
+                {!creatingMessage
                   ? <React.Fragment>
-                      <h5 className={classes.cardTitle}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac est pulvinar, tempor turpis id, 
-                        vehicula magna.
+                    <h5 className={classes.cardTitle}>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac est pulvinar, tempor turpis id,
+                      vehicula magna.
                       </h5>
-                      <p className={classes.cardCategory}>
-                        Jane Doe
+                    <p className={classes.cardCategory}>
+                      Jane Doe
                       </p>
-                    </React.Fragment> 
+                  </React.Fragment>
                   : <React.Fragment>
-                      <GridContainer>
-                        <GridItem xs={12}>
-                          <CustomInput
-                            labelText="Nome"
-                            id="name"
-                            color="success"
-                            formControlProps={{
-                              fullWidth: true
-                            }}
-                          />
-                        </GridItem>
-                      </GridContainer>
-                      <GridContainer>
-                        <GridItem xs={12}>
+                    <GridContainer>
+                      <GridItem xs={12}>
+                        <CustomInput
+                          labelText="Nome"
+                          id="name"
+                          color="success"
+                          formControlProps={{
+                            fullWidth: true
+                          }}
+                        />
+                      </GridItem>
+                    </GridContainer>
+                    <GridContainer>
+                      <GridItem xs={12}>
                         <CustomInput
                           labelText="Mensagem"
                           id="message"
@@ -346,9 +304,9 @@ class Dashboard extends React.Component<Props, State> {
                             rows: 5
                           }}
                         />
-                        </GridItem>
-                      </GridContainer>
-                    </React.Fragment>
+                      </GridItem>
+                    </GridContainer>
+                  </React.Fragment>
                 }
               </CardBody>
               {creatingMessage && (

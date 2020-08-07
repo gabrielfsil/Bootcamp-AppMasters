@@ -4,6 +4,7 @@
   "description": "Dashboard react",
   "private": false,
   "main": "dist/index.js",
+  "homepage": "http://gabrielfsil.github.io/Bootcamp-AppMasters",
   "dependencies": {
     "@material-ui/core": "3.9.2",
     "@material-ui/icons": "3.0.2",
@@ -11,18 +12,23 @@
     "@types/classnames": "^2.2.8",
     "@types/react": "^16.8.20",
     "@types/react-dom": "^16.8.4",
+    "@types/react-leaflet": "^2.5.2",
     "@types/react-router-dom": "^4.3.4",
+    "axios": "^0.19.2",
     "chartist": "0.10.1",
     "classnames": "2.2.6",
     "csstype": "2.6.12",
     "history": "4.7.2",
+    "leaflet": "^1.6.0",
     "moment": "2.27.0",
+    "path": "^0.12.7",
     "perfect-scrollbar": "1.4.0",
     "prettier": "1.16.4",
     "react": "^16.8.1",
     "react-chartist": "0.13.3",
     "react-dom": "16.8.1",
     "react-google-maps": "9.4.5",
+    "react-leaflet": "^2.7.0",
     "react-router-dom": "4.3.1",
     "react-scripts": "2.1.5",
     "react-swipeable-views": "0.13.1",
@@ -33,6 +39,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
@@ -58,5 +66,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {}
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  }
 }
