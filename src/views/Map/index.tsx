@@ -1,10 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 
-import { Map, TileLayer, GeoJSON, Marker, Popup } from "react-leaflet";
+import { Map, TileLayer, GeoJSON, Popup } from "react-leaflet";
 
 
 import './styles.css'
+import Axios from 'axios';
 
 interface Props {
 
@@ -36,16 +37,25 @@ class MapView extends React.Component<Props, State> {
             method: "GET"
         })
 
+        const res = await Axios({
+            url: `https://covid19-brazil-api.now.sh/api/report/v1`,
+        })
+
         const { features } = response.data
 
-        const data = features.map((state: any) => {
-            state.properties.value = Math.random() * 1000
+        const { data: states } = res.data
+
+
+        const data = features.map((state: any, index: number) => {
+
+            
+            state.properties.value = states[index].cases
 
             return state
         });
 
         this.setState({
-            data: features
+            data: data
         })
     }
 
@@ -61,16 +71,17 @@ class MapView extends React.Component<Props, State> {
         } else {
 
             const { lat, lng } = e.latlng
-            const { x, y } = e.la
+            const { x, y } = e.layerPoint
 
             this.setState({
                 ...this.state,
                 current: {
-                
-                coords:[
-                    lat,
-                    lng
-                ]}
+
+                    coords: [
+                        lat,
+                        lng
+                    ]
+                }
             })
         }
 
@@ -88,7 +99,7 @@ class MapView extends React.Component<Props, State> {
 
         return (
             <main className="map-view">
-                <Map center={positon} zoom={5} style={{ width: "100%", height: "100%" }} onclick={event => console.log(event)} >
+                <Map center={positon} zoom={5} style={{ width: "100%", height: "100%" }}  >
                     <TileLayer
                         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -97,32 +108,27 @@ class MapView extends React.Component<Props, State> {
 
                     {this.state.data &&
                         <GeoJSON
+                            onclick={event => console.log(event)}
                             data={this.state.data}
                             style={function (feature: any) {
 
                                 const { value } = feature.properties
                                 var color
-
-                                if (value > 900) {
-                                    color = '#800026'
-                                } else if (value > 800) {
-                                    color = '#BD0026'
-
-                                } else if (value > 700) {
-                                    color = '#E31A1C'
-
-                                } else if (value > 600) {
-                                    color = '#FC4E2A'
-
-                                } else if (value > 500) {
-                                    color = '#FD8D3C'
-
-                                } else if (value > 400) {
-                                    color = '#FEB24C'
-
-                                } else {
-
+                                
+                                if (value > 500000) {
                                     color = '#FED976'
+                                } else if (value > 300000) {
+                                    color = '#FEB24C'
+                                } else if (value > 200000) {
+                                    color = '#FD8D3C'
+                                } else if (value > 100000) {
+                                    color = '#FC4E2A'
+                                } else if (value > 50000) {
+                                    color = '#E31A1C'
+                                } else if (value > 25000) {
+                                    color = '#BD0026'
+                                } else {
+                                    color = '#800026'
                                 }
 
                                 return {
@@ -140,7 +146,7 @@ class MapView extends React.Component<Props, State> {
                     {this.state.current &&
 
                         <Popup position={this.state.current.coords}>
-                           Minas Gerais <br />
+                            Minas Gerais <br />
                            23.231 casos
                         </Popup>
 
