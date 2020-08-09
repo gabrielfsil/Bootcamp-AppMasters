@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Bootcamp-AppMasters/precache-manifest.3a983520fbfc78975e5edb02e13b6084.js"
+  "/Bootcamp-AppMasters/precache-manifest.c811493ae6094289d84ee59f6ed398c8.js"
 );
 
 workbox.clientsClaim();

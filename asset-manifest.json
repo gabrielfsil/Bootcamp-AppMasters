@@ -1,16 +1,16 @@
 {
-  "main.css": "/Bootcamp-AppMasters/static/css/main.90121898.chunk.css",
-  "main.js": "/Bootcamp-AppMasters/static/js/main.88a1c44c.chunk.js",
-  "main.js.map": "/Bootcamp-AppMasters/static/js/main.88a1c44c.chunk.js.map",
+  "main.css": "/Bootcamp-AppMasters/static/css/main.f0e57ae6.chunk.css",
+  "main.js": "/Bootcamp-AppMasters/static/js/main.27c096a6.chunk.js",
+  "main.js.map": "/Bootcamp-AppMasters/static/js/main.27c096a6.chunk.js.map",
   "runtime~main.js": "/Bootcamp-AppMasters/static/js/runtime~main.41035da1.js",
   "runtime~main.js.map": "/Bootcamp-AppMasters/static/js/runtime~main.41035da1.js.map",
   "static/css/2.adaed672.chunk.css": "/Bootcamp-AppMasters/static/css/2.adaed672.chunk.css",
-  "static/js/2.d6a281dc.chunk.js": "/Bootcamp-AppMasters/static/js/2.d6a281dc.chunk.js",
-  "static/js/2.d6a281dc.chunk.js.map": "/Bootcamp-AppMasters/static/js/2.d6a281dc.chunk.js.map",
+  "static/js/2.5d5ef3f1.chunk.js": "/Bootcamp-AppMasters/static/js/2.5d5ef3f1.chunk.js",
+  "static/js/2.5d5ef3f1.chunk.js.map": "/Bootcamp-AppMasters/static/js/2.5d5ef3f1.chunk.js.map",
   "index.html": "/Bootcamp-AppMasters/index.html",
-  "precache-manifest.3a983520fbfc78975e5edb02e13b6084.js": "/Bootcamp-AppMasters/precache-manifest.3a983520fbfc78975e5edb02e13b6084.js",
+  "precache-manifest.c811493ae6094289d84ee59f6ed398c8.js": "/Bootcamp-AppMasters/precache-manifest.c811493ae6094289d84ee59f6ed398c8.js",
   "service-worker.js": "/Bootcamp-AppMasters/service-worker.js",
   "static/css/2.adaed672.chunk.css.map": "/Bootcamp-AppMasters/static/css/2.adaed672.chunk.css.map",
-  "static/css/main.90121898.chunk.css.map": "/Bootcamp-AppMasters/static/css/main.90121898.chunk.css.map",
+  "static/css/main.f0e57ae6.chunk.css.map": "/Bootcamp-AppMasters/static/css/main.f0e57ae6.chunk.css.map",
   "static/media/sidebar-1.jpg": "/Bootcamp-AppMasters/static/media/sidebar-1.8e9f0a3c.jpg"
 }
