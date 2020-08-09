@@ -134,20 +134,20 @@ class Dashboard extends React.Component<Props, State> {
         <GridContainer>
           <GridItem xs={12} sm={6} md={3}>
             <CardDash
-              title="Casos em Recuperação"
-              icon={<PeopleIcon />}
-              value={cases}
-              classes={classes}
-              color="info"
-            />
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <CardDash
               title="Casos Confirmados"
               icon={<BubbleChartIcon />}
               value={casesConfirms}
               classes={classes}
               color="warning"
+            />
+          </GridItem>
+          <GridItem xs={12} sm={6} md={3}>
+            <CardDash
+              title="Casos em Recuperação"
+              icon={<PeopleIcon />}
+              value={cases}
+              classes={classes}
+              color="info"
             />
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
@@ -178,17 +178,20 @@ class Dashboard extends React.Component<Props, State> {
           <GridItem xs={12} sm={12} md={12}>
             <Card chart={true}>
               <CardHeader color="info">
-                
-                  <ChartistGraph
-                    className="ct-chart"
-                    data={evolutionCasesChart ? evolutionCasesChart.data : []}
-                    type="Bar"
-                  />
 
-                
+                <ChartistGraph
+                  className="ct-chart"
+                  data={evolutionCasesChart ? evolutionCasesChart.data : {
+                    labels: [],
+                    series: [],
+                  }}
+                  type="Bar"
+                />
+
+
               </CardHeader>
               <CardBody>
-                <h4 className={classes.cardTitle}>Casos hoje em cada estado</h4>
+                <h4 className={classes.cardTitle}>Casos em cada estado</h4>
 
               </CardBody>
               <CardFooter chart={true}>
@@ -200,24 +203,26 @@ class Dashboard extends React.Component<Props, State> {
           </GridItem>
         </GridContainer>
         <GridContainer>
-          <Card>
-            <CardHeader color="info">
-              <h4 className={classes.cardTitle}>Número de casos por estado</h4>
+          <GridItem xs={12} sm={12} md={6}>
+            <Card>
+              <CardHeader color="info">
+                <h4 className={classes.cardTitle}>Número de casos por estado</h4>
 
-            </CardHeader>
-            <CardBody>
-              <Table
-                tableHeaderColor="primary"
-                tableHead={['Estado', 'Casos', 'Mortes', 'Suspeitos']}
-                tableData={casesOfState.map((state: any) => [`${state.state}`, `${Intl.NumberFormat('pt-BR').format(state.cases)}`, `${Intl.NumberFormat('pt-BR').format(state.deaths)}`, `${Intl.NumberFormat('pt-BR').format(state.suspects)}`])}
-              />
-            </CardBody>
-            <CardFooter chart={true}>
-              <div className={classes.stats}>
-                <AccessTime /> atualizado hoje
+              </CardHeader>
+              <CardBody>
+                <Table
+                  tableHeaderColor="primary"
+                  tableHead={['Estado', 'Casos', 'Mortes', 'Suspeitos']}
+                  tableData={casesOfState.map((state: any) => [`${state.state}`, `${Intl.NumberFormat('pt-BR').format(state.cases)}`, `${Intl.NumberFormat('pt-BR').format(state.deaths)}`, `${Intl.NumberFormat('pt-BR').format(state.suspects)}`])}
+                />
+              </CardBody>
+              <CardFooter chart={true}>
+                <div className={classes.stats}>
+                  <AccessTime /> atualizado hoje
                 </div>
-            </CardFooter>
-          </Card>
+              </CardFooter>
+            </Card>
+          </GridItem>
         </GridContainer>
       </div>
     );

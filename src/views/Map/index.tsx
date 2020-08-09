@@ -1,11 +1,12 @@
 import React from 'react'
 import axios from 'axios'
 
-import { Map, TileLayer, GeoJSON, Popup } from "react-leaflet";
+import { Map, TileLayer, GeoJSON, Popup, AttributionControl, LayersControl, FeatureGroup, Circle, Pane, GridLayer, DivOverlay } from "react-leaflet";
 
 
 import './styles.css'
 import Axios from 'axios';
+import Legend from '../../components/Legend';
 
 interface Props {
 
@@ -48,11 +49,17 @@ class MapView extends React.Component<Props, State> {
 
         const data = features.map((state: any, index: number) => {
 
-            
-            state.properties.value = states[index].cases
+            const cases = states.find((uf: any) => {
+
+                return uf.uf === state.properties.sigla
+            })
+
+            state.properties.value = cases.cases
 
             return state
         });
+
+
 
         this.setState({
             data: data
@@ -100,13 +107,17 @@ class MapView extends React.Component<Props, State> {
         return (
             <main className="map-view">
                 <Map center={positon} zoom={5} style={{ width: "100%", height: "100%" }}  >
+
+
                     <TileLayer
                         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         id="mapbox/light-v9"
                     />
+                    <Legend />
 
                     {this.state.data &&
+
                         <GeoJSON
                             onclick={event => console.log(event)}
                             data={this.state.data}
@@ -114,21 +125,21 @@ class MapView extends React.Component<Props, State> {
 
                                 const { value } = feature.properties
                                 var color
-                                
+
                                 if (value > 500000) {
-                                    color = '#FED976'
+                                    color = '#800026'
                                 } else if (value > 300000) {
-                                    color = '#FEB24C'
+                                    color = '#BD0026'
                                 } else if (value > 200000) {
-                                    color = '#FD8D3C'
+                                    color = '#E31A1C'
                                 } else if (value > 100000) {
                                     color = '#FC4E2A'
                                 } else if (value > 50000) {
-                                    color = '#E31A1C'
+                                    color = '#FD8D3C'
                                 } else if (value > 25000) {
-                                    color = '#BD0026'
+                                    color = '#FEB24C'
                                 } else {
-                                    color = '#800026'
+                                    color = '#FED976'
                                 }
 
                                 return {
@@ -151,6 +162,7 @@ class MapView extends React.Component<Props, State> {
                         </Popup>
 
                     }
+
                 </Map>
             </main>
         )

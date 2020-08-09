@@ -5,3 +5,15 @@
     height: 90vh;
     background-color: #f0f0f9;
 }
+
+.map-view .pane-of-legend{
+    width: 10rem;
+    height: 20rem;
+    background-color: red;
+}
+
+.icon-legend{
+    display: inline-block;
+    width: 20px !important;
+    height: 10px !important;
+}
